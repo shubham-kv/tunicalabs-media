@@ -1,0 +1,47 @@
+@import '@styles/variables.scss';
+
+.addStudent {
+	h2 {
+		color: rgba($primary_dark, 0.6);
+		margin: 0;
+	}
+
+	form {
+		max-width: 350px;
+		margin: 1.5rem 0;
+	}
+
+	.inputWrapper {
+		display: flex;
+		justify-content: space-between;
+		margin: 1rem 0;
+		font-size: 1.1rem;
+
+		input, select {
+			outline: none;
+			
+			width: 160px;
+			padding: 0.6rem 0.8rem;
+			margin-left: 1rem;
+			
+			border-radius: 4px;
+			border: 1px solid rgba(black, 0.1);
+			background-color: rgba(black, 0.08);
+		}
+		
+		.checkboxWrapper {
+			display: flex;
+			
+			input[type=radio] {
+				width: revert !important;
+			}
+		}
+	}
+
+	.saveBtn {
+		width: 100%;
+		margin: 0.6rem 0;
+		padding: 0.6rem;
+		border-radius: 4px;
+	}
+}

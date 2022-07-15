@@ -1,0 +1,27 @@
+@import './variables.scss';
+
+.darkBackground {
+	background-color: $primary_dark;
+}
+
+.primaryBtn {
+	outline-color: $primary_dark;
+	outline-offset: 4px;
+
+	font-size: 1rem;
+	border-radius: 100px;
+	border: 1px solid rgba($primary_dark, 0.1);
+
+	color: white;
+	background-color: $primary_dark;
+	transition: all 0.2s ease;
+
+	&:disabled {
+		background-color: rgba($primary_dark, 0.38);
+	}
+
+	&:not(:disabled):active {
+		color: $primary_dark;
+		background-color: unset;
+	}
+}

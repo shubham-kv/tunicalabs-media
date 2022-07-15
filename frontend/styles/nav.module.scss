@@ -1,0 +1,35 @@
+
+.nav {
+	img {
+		user-select: none;
+	}
+
+	ul {
+		display: flex;
+		align-items: center;
+		list-style-type: none;
+		padding: 0;
+
+		li {
+			margin: 0 0.8rem;
+		}
+
+		li:nth-child(2) {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.userBtn {
+		display: flex;
+		align-items: center;
+		border: none;
+		color: white;
+		background-color: transparent;
+
+		span {
+			margin: 4px;
+		}
+	}
+}
+

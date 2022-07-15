@@ -1,0 +1,136 @@
+@import '@styles/variables.scss';
+
+.viewStudents {
+	position: relative;
+	height: 100%;
+
+	h2 {
+		color: rgba($primary_dark, 0.6);
+		margin: 0;
+	}
+
+	.cinput, .cselect {
+		outline-color: $primary_dark;
+		width: 150px;
+		padding: 0.6rem;
+		margin-right: 1rem;
+
+		font-size: 1rem;
+		border-radius: 4px;
+		border: 1px solid transparent;
+		background-color: rgba(black, 0.10);
+	}
+
+	.cinput::placeholder {
+		color: rgba(black, 0.4);
+	}
+
+	.cinput:focus,
+	.cselect:focus {
+		border: 1px solid rgba(black, 0.48);
+	}
+
+	.searchBtn {
+		outline-color: $primary_dark;
+		outline-offset: 4px;
+		border: none;
+
+		padding: 0.6rem 1.2rem;
+		font-size: 1rem;
+		border-radius: 4px;
+
+		color: white;
+		background-color: $primary_dark;
+		transition: all 0.2s ease;
+		
+		&:not(:disabled):active {
+			color: $primary_dark;
+			background-color: white;
+		}
+	}
+	
+	.filterWrapper {
+		margin: 1.2rem 0;
+	}
+
+	.tableWrapper {
+		overflow-x: auto;
+	}
+
+	table {
+		background-color: white;
+		border-collapse: collapse;
+
+		thead tr {
+			color: white;
+			background-color: rgba($primary_dark, 0.8);
+		}
+
+		tr:nth-child(even) td {
+			background-color: rgba($primary_dark, 0.1);
+		}
+
+		th, td {
+			text-align: start;
+			min-width: 60px;
+			padding: 0.6rem;
+		}
+
+		th {
+			padding: 0.8rem 0.6rem;
+		}
+
+		a.editLink, a.deleteLink {
+			margin: 0 0.4rem;
+			color: #0000ee;
+			
+			&:hover {
+				cursor: pointer;
+			}
+		}	
+	}
+
+	.viewStudentsPagination {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		margin: 0.6rem 0;
+
+		button {
+			outline-color: $primary_dark;
+			outline-offset: 4px;
+
+			width:  2rem;
+			height: 2rem;
+			margin: 0.2rem;
+			
+			border: 1px solid rgba(black, 0.1);
+			border-radius: 4px;
+			transition: all 0.2s ease;
+			background-color: unset;
+
+			&:not(:disabled) {
+				&:hover {
+					background-color: rgba($primary_dark, 0.1);
+				}
+				&:focus {
+					background-color: rgba($primary_dark, 0.2);
+				}
+				&:active {
+					color: white;
+					background-color: rgba($primary_dark, 0.6);
+				}
+			}
+
+			&.arrowPaginationBtn {
+				border-radius: 50%;
+				border: none;
+			}
+
+			&.activePageBtn {
+				color: white;
+				background-color: rgba($primary_dark, 0.6) !important;
+			}
+		}
+	}
+}

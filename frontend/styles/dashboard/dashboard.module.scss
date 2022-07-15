@@ -1,0 +1,47 @@
+@import '@styles/variables.scss';
+
+.dashboard {
+	display: flex;
+	height: 590px;
+	margin: 2rem auto;
+
+	border-radius: 8px;
+	box-shadow: 0 0 24px 8px rgba(black, 0.1);
+}
+
+.dashboardSidePane {
+	border-right: 1px solid rgba(black, 0.2);
+
+	.sidePaneLink {
+		display: block;
+		width: 150px;
+		margin: 0.6rem;
+		padding: 0.4rem;
+
+		border-radius: 8px;
+		outline-color: $primary_dark;
+		transition: all 0.1s ease;
+
+		&:hover {
+			cursor: default;
+		}
+
+		&:active {
+			color: $primary_dark;
+			background-color: rgba($primary_dark, 0.1);
+		}
+
+		* {
+			margin: 0 0.2rem;
+		}
+	}
+
+	.sidePaneLinkActive {
+		color: $primary_dark;
+	}
+}
+
+.dashboardContent {
+	width: 1024px;
+	padding: 1rem 2rem;
+}

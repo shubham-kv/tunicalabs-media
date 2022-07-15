@@ -1,0 +1,21 @@
+@import '@styles/variables.scss';
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	color: #F0F0F0;
+	background-color: $primary_light;
+
+	h1 {
+		margin: 0;
+		padding: 1.3rem;
+		text-transform: uppercase;
+		font-size: 1.25rem;
+	}
+
+	h1::selection {
+		background-color: rgba(white, 0.3);
+	}
+}

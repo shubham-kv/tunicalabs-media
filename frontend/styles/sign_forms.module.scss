@@ -1,0 +1,112 @@
+@import './variables.scss';
+
+.formBg {
+	display: flex;
+	flex-direction: column;
+	align-items: center;	
+	flex-grow: 1;
+	background-color: $primary_dark;
+}
+
+.signForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin: 3rem auto;
+	padding: 1rem;
+	max-width: 300px;
+
+	border-radius: 1rem;
+	background-color: white;
+
+	.formHeader {
+		margin: 0.2rem;
+		color: $primary_dark;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+
+		div.inputWrapper {
+			display: flex;
+			flex-direction: column-reverse;
+			margin: 0.4rem auto;
+			
+			label {
+				margin-left: 1rem;
+			}
+
+			input:required + label::after {
+				content: ' *';
+				color: red;
+			}
+		}
+
+		input {
+			outline: none;
+			border: none;
+
+			width: 250px;
+			border: 2px solid rgba(black, 0.38);
+			margin-top: 0.4rem;
+			border-radius: 24px;
+			padding: 0.8rem 1.1rem;
+			font-size: 0.9rem;
+
+			&::placeholder {
+				color: rgba(black, 0.38);
+			}
+
+			&:focus {
+				color: $primary_dark;
+				border: 2px solid $primary_dark;
+			}
+		}
+
+		input[type=checkbox] {
+			width: auto;
+			accent-color: $primary_dark;
+			
+			&:focus {
+				outline: auto;
+				outline-color: $primary_dark;
+			}
+
+			& + label {
+				font-size: 0.8rem;
+			}
+		}
+	}
+
+	.extraPrompt {
+		margin-top: 0.4rem;
+		font-size: 0.9rem;
+
+		a {
+			font-weight: 600;
+			color: $primary_dark;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.signInBtn, .signUpBtn {
+	width: 250px;
+	margin: 0.5rem;
+	padding: 0.8rem 1.1rem;
+}
+
+.agreeTermsInputWrapper {
+	display: flex;
+	align-items: center;
+	margin: 0.2rem 0.5rem;
+
+	label {
+		margin: 0 !important;
+		cursor: pointer;
+	}
+}
