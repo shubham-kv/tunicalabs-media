@@ -1,15 +1,15 @@
-import Image from "next/image"
-import {Badge} from "@mui/material"
+import Image from 'next/image'
+import {Badge} from '@mui/material'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
-import styles from '@styles/nav.module.scss'
+import styles from 'styles/nav.module.scss'
 
 const Nav = () => (
 	<nav className={styles.nav}>
 		<ul>
 			<li>
-				<Badge badgeContent={1} color="error">
+				<Badge badgeContent={1} color='error'>
 					<NotificationsIcon />
 				</Badge>
 			</li>

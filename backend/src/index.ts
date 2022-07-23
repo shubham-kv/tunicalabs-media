@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import {ApolloServer} from 'apollo-server-express'
 import {buildSchema} from 'type-graphql'
 
-import {CLIENT} from './constants'
+import {__prod__} from './constants'
 import {StudentResolvers} from './resolvers/student'
 import {AppDataSource} from './dataSource'
 
@@ -17,7 +17,11 @@ const main = async () => {
 	const PORT = process.env.PORT || 4000
 	const corsOptions = {
 		credentials: true,
-		origin: [CLIENT, 'https://studio.apollographql.com']
+		origin: [process.env.FRONTEND_CLIENT as string]
+	}
+
+	if(!__prod__) {
+		corsOptions.origin.push('https://studio.apollographql.com')
 	}
 
 	app.use(cors(corsOptions))
@@ -25,7 +29,7 @@ const main = async () => {
 	const schema = await buildSchema({
 		resolvers: [...StudentResolvers]
 	})
-	
+
 	const apolloServer = new ApolloServer({
 		schema,
 		csrfPrevention: true,

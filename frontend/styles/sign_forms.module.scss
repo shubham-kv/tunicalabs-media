@@ -1,4 +1,4 @@
-@import './variables.scss';
+@use 'styles/variables' as *;
 
 .formBg {
 	display: flex;
@@ -36,11 +36,6 @@
 			
 			label {
 				margin-left: 1rem;
-			}
-
-			input:required + label::after {
-				content: ' *';
-				color: red;
 			}
 		}
 

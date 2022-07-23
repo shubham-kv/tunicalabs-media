@@ -6,9 +6,6 @@ export class GetStudentsFilter {
 	name?: string
 
 	@Field({nullable: true})
-	dob?: Date
-
-	@Field({nullable: true})
 	school?: string
 
 	@Field({nullable: true})

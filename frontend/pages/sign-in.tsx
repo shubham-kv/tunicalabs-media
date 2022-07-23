@@ -1,8 +1,9 @@
-import {useRef, useState, ChangeEventHandler} from 'react'
+import {useCallback, useRef, useState} from 'react'
+import type {ChangeEventHandler} from 'react'
 import Link from 'next/link'
 
-import styles from '@styles/sign_forms.module.scss'
-import utilStyles from '@styles/utils.module.scss'
+import styles from 'styles/sign_forms.module.scss'
+import utilStyles from 'styles/utils.module.scss'
 
 
 type SignUpFormData = {
@@ -18,14 +19,14 @@ const SignIn = () => {
 		termsAgreed: false
 	})
 
-	const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+	const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(e => {
 		setFormData(prevData => ({
 			...prevData,
 			[e.target.name]: (e.target.type !== 'checkbox')
 				? e.target.value
 				: e.target.checked
 		}))
-	}
+	}, [])
 
 	const submitBtnRef = useRef<HTMLButtonElement>(null!)
 
@@ -37,10 +38,10 @@ const SignIn = () => {
 				<form onSubmit={e => e.preventDefault()}>
 					<div className={styles.inputWrapper}>
 						<input
-							id="emailInput"
-							name="email"
-							type="email"
-							placeholder="Your email"
+							id='emailInput'
+							name='email'
+							type='email'
+							placeholder='Your email'
 							onChange={handleChange}
 							required
 							/>
@@ -49,10 +50,10 @@ const SignIn = () => {
 
 					<div className={styles.inputWrapper}>
 						<input
-							id="passwordInput"
-							name="password"
+							id='passwordInput'
+							name='password'
 							type='password'
-							placeholder="Your password"
+							placeholder='Your password'
 							onChange={handleChange}
 							required
 							/>
@@ -61,14 +62,14 @@ const SignIn = () => {
 					
 					<div className={styles.agreeTermsInputWrapper}>
 						<input
-							id="agreeTermsCheckBox"
-							name="termsAgreed"
-							type="checkbox"
+							id='agreeTermsCheckBox'
+							name='termsAgreed'
+							type='checkbox'
 							required
 							onChange={handleChange}
 							/>
 
-						<label htmlFor="agreeTermsCheckBox">
+						<label htmlFor='agreeTermsCheckBox'>
 							I agree to the terms &amp; conditions
 						</label>
 					</div>
@@ -83,7 +84,7 @@ const SignIn = () => {
 				
 				<div className={styles.extraPrompt}>
 					{`Don't have an account? `}
-					<Link href="/sign-up">
+					<Link href='/sign-up'>
 						<a>Sign Up</a>
 					</Link>
 				</div>

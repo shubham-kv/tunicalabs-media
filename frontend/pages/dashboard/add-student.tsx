@@ -1,14 +1,25 @@
-import {ChangeEventHandler, FormEventHandler, useCallback, useState} from 'react'
+import {useCallback, useState} from 'react'
+import type {ChangeEventHandler, FormEventHandler} from 'react'
+
 import {gql, useMutation} from '@apollo/client'
 
-import DashboardLayout from '@components/DashboardLayout'
+import DashboardLayout from 'components/dashboard/DashboardLayout'
 import {schools, standards, divisions} from 'utils/constants'
 
-import styles from '@styles/dashboard/add_student.module.scss'
-import utilStyles from '@styles/utils.module.scss'
+import styles from 'styles/dashboard/addStudent/index.module.scss'
+import utilStyles from 'styles/utils.module.scss'
 
 
-const initialFormData = Object.freeze({
+type FormData = {
+	name: string
+	dob: string
+	school: string
+	standard: string
+	division: string
+	status: string
+}
+
+const initialFormData: FormData = Object.freeze({
 	name: '',
 	dob: '',
 	school: '',
@@ -26,7 +37,7 @@ const CREATE_STUDENT = gql`
 `
 
 const AddStudent = () => {
-	const [formData, setFormData] = useState(initialFormData)
+	const [formData, setFormData] = useState<FormData>(initialFormData)
 	const [createStudentMutation, {loading}] = useMutation(CREATE_STUDENT, {})
 
 	const handleFormSubmit: FormEventHandler = useCallback((e) => {
@@ -36,9 +47,11 @@ const AddStudent = () => {
 	}, [createStudentMutation, formData])
 
 	const handleChange: ChangeEventHandler = useCallback((e) => {
+		const inputElement = e.target as HTMLInputElement
+
 		setFormData((prevData) => ({
 			...prevData,
-			[(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value
+			[inputElement.name]: inputElement.value
 		}))
 	}, [])
 

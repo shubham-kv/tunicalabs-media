@@ -1,34 +1,32 @@
-import {ReactElement, useCallback, useEffect} from 'react'
+import {useCallback, useEffect} from 'react'
+import type {PropsWithChildren} from 'react'
+
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 
 import {useAuthContext} from 'contexts/AuthContext'
-import styles from '@styles/dashboard/dashboard.module.scss'
+import styles from 'styles/dashboard/dashboard.module.scss'
 
 
-type DashboardLayoutFn = 
-	(props: {children: ReactElement[] | ReactElement}) => ReactElement
-
-
-const DashboardLayout: DashboardLayoutFn = ({children}) => {
+const DashboardLayout = ({children}: PropsWithChildren) => {
 	const router = useRouter()
-	const {setIsAuthorized} = useAuthContext()
+	const {setIsAuthorized} = useAuthContext()!
 
 	useEffect(() => {
-		setIsAuthorized && setIsAuthorized(true)
+		setIsAuthorized(true)
+
 		return () => {
-			setIsAuthorized && setIsAuthorized(false)
+			setIsAuthorized(false)
 		}
 	}, [setIsAuthorized])
-
 
 	const links = [
 		'/dashboard/view-students',
 		'/dashboard/add-student'
 	]
 
-	const getClassName = useCallback((href: string) => (
-		(router.asPath === href)
+	const getClassName = useCallback((uri: string) => (
+		(router.asPath === uri)
 			? styles.sidePaneLinkActive
 			: ''
 	), [router])

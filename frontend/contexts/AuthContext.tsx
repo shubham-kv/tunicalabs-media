@@ -1,24 +1,14 @@
-import {createContext, Dispatch, SetStateAction, useContext, useEffect, useState} from 'react'
-import type {ReactElement} from 'react'
+import {createContext, useContext, useEffect, useState} from 'react'
+import type {PropsWithChildren, Dispatch, SetStateAction} from 'react'
 
 type AuthCtxValue = {
-	isAuthorized: boolean | null,
-	setIsAuthorized: Dispatch<SetStateAction<boolean>> | null
+	isAuthorized: boolean
+	setIsAuthorized: Dispatch<SetStateAction<boolean>>
 }
 
-const defaultCtxValue: AuthCtxValue = {
-	isAuthorized: null,
-	setIsAuthorized: null
-}
+const AuthContext = createContext<AuthCtxValue | null>(null)
 
-const AuthContext = createContext(defaultCtxValue)
-
-type AuthProviderProps = {
-	children: ReactElement[] | ReactElement
-}
-
-// a dummy auth provider
-const AuthProvider = ({children}: AuthProviderProps) => {
+const AuthProvider = ({children}: PropsWithChildren) => {
 	const [isAuthorized, setIsAuthorized] = useState(false)
 	const ctxValue = {isAuthorized, setIsAuthorized}
 
@@ -29,18 +19,16 @@ const AuthProvider = ({children}: AuthProviderProps) => {
 	)
 }
 
-// a custom hook to use the Auth context
 const useAuthContext = () => {
 	const ctxValue = useContext(AuthContext)
 	
 	useEffect(() => {
-		if(ctxValue.isAuthorized === null) {
+		if(ctxValue === null) {
 			throw Error("The Component using 'useAuthContext' hook must be a descendant of 'AuthProvider'.")
 		}
-	}, [ctxValue.isAuthorized])
+	}, [ctxValue])
 
 	return ctxValue
 }
 
-export default AuthProvider
-export {useAuthContext}
+export {AuthProvider, useAuthContext}

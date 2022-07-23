@@ -1,0 +1,47 @@
+@use 'styles/variables' as *;
+
+.studentsPagination {
+	position: absolute;
+	right: 0;
+	bottom: 0.5rem;
+	margin-top: 0.5rem;
+
+	button {
+		outline-color: $primary_dark;
+		outline-offset: 4px;
+
+		width:  2rem;
+		height: 2rem;
+		margin: 0.2rem;
+		
+		border: 1px solid rgba(black, 0.1);
+		border-radius: 4px;
+		transition: all 0.2s ease;
+		background-color: unset;
+
+		&:not(:disabled) {
+			&:hover {
+				background-color: rgba($primary_dark, 0.1);
+			}
+			&:focus {
+				background-color: rgba($primary_dark, 0.2);
+			}
+			&:active {
+				color: white;
+				background-color: rgba($primary_dark, 0.6);
+			}
+		}
+
+		&.arrowPaginationBtn {
+			border-radius: 50%;
+			border: none;
+			text-align: center;
+			font-size: 0.8rem;		
+		}
+
+		&.activePageBtn {
+			color: white;
+			background-color: rgba($primary_dark, 0.6) !important;
+		}
+	}
+}

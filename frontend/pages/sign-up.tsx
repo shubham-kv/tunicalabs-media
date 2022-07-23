@@ -1,8 +1,9 @@
-import {ChangeEventHandler, useRef, useState} from 'react'
+import {useCallback, useRef, useState} from 'react'
+import type {ChangeEventHandler} from 'react'
 import Link from 'next/link'
 
-import styles from '@styles/sign_forms.module.scss'
-import utilStyles from '@styles/utils.module.scss'
+import styles from 'styles/sign_forms.module.scss'
+import utilStyles from 'styles/utils.module.scss'
 
 
 type SignUpFormData = {
@@ -20,14 +21,14 @@ const SignUp = () => {
 		termsAgreed: false
 	})
 
-	const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+	const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(e => {
 		setFormData(prevData => ({
 			...prevData,
 			[e.target.name]: (e.target.type !== 'checkbox')
 				? e.target.value
 				: e.target.checked
 		}))
-	}
+	}, [])
 
 	const submitBtnRef = useRef<HTMLButtonElement>(null!)
 
@@ -39,50 +40,50 @@ const SignUp = () => {
 				<form onSubmit={(e) => e.preventDefault()}>
 					<div className={styles.inputWrapper}>
 						<input
-							id="emailInput"
-							name="email"
-							type="email"
-							placeholder="Your email"
+							id='emailInput'
+							name='email'
+							type='email'
+							placeholder='Your email'
 							required
 							onChange={handleChange}
 							/>
-							<label htmlFor="emailInput">Email</label>
+							<label htmlFor='emailInput'>Email</label>
 					</div>
 
 					<div className={styles.inputWrapper}>
 						<input
-							id="passwordInput"
-							name="password"
-							type="password"
-							placeholder="Your password"
+							id='passwordInput'
+							name='password'
+							type='password'
+							placeholder='Your password'
 							required
 							onChange={handleChange}
 							/>
-						<label htmlFor="passwordInput">Password</label>
+						<label htmlFor='passwordInput'>Password</label>
 					</div>
 
 					<div className={styles.inputWrapper}>
 						<input
-							id="confirmPasswordInput"
-							name="confirmedPassword"
-							type="password"
-							placeholder="Confirm password"
+							id='confirmPasswordInput'
+							name='confirmedPassword'
+							type='password'
+							placeholder='Confirm password'
 							required
 							onChange={handleChange}
 							/>
-						<label htmlFor="confirmPasswordInput">Confirm password</label>
+						<label htmlFor='confirmPasswordInput'>Confirm password</label>
 					</div>
 
 					<div className={styles.agreeTermsInputWrapper}>
 						<input
-							id="agreeTermsCheckBox"
-							name="termsAgreed"
-							type="checkbox"
+							id='agreeTermsCheckBox'
+							name='termsAgreed'
+							type='checkbox'
 							required
 							onChange={handleChange}
 							/>
 
-						<label htmlFor="agreeTermsCheckBox">
+						<label htmlFor='agreeTermsCheckBox'>
 							I agree to the terms &amp; conditions
 						</label>
 					</div>
@@ -97,7 +98,7 @@ const SignUp = () => {
 
 				<div className={styles.extraPrompt}>
 					{`Already have an account? `}
-					<Link href="/sign-in">
+					<Link href='/sign-in'>
 						<a>Sign In</a>
 					</Link>
 				</div>

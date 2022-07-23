@@ -1,4 +1,14 @@
 
+export const columns = Object.freeze([
+	`id`,
+	'name',
+	'age',
+	'school',
+	'standard',
+	'division',
+	'status'
+])
+
 export const schools = Object.freeze([
 	'School A',
 	'School B',

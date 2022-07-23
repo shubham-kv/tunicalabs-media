@@ -1,8 +1,8 @@
-@import '@styles/variables.scss';
+@use 'styles/variables' as *;
 
 .dashboard {
 	display: flex;
-	height: 590px;
+	min-height: 620px;
 	margin: 2rem auto;
 
 	border-radius: 8px;
@@ -18,7 +18,7 @@
 		margin: 0.6rem;
 		padding: 0.4rem;
 
-		border-radius: 8px;
+		border-radius: 4px;
 		outline-color: $primary_dark;
 		transition: all 0.1s ease;
 
@@ -28,7 +28,7 @@
 
 		&:active {
 			color: $primary_dark;
-			background-color: rgba($primary_dark, 0.1);
+			background-color: rgba($primary_dark, 0.05);
 		}
 
 		* {
@@ -38,6 +38,7 @@
 
 	.sidePaneLinkActive {
 		color: $primary_dark;
+		background-color: rgba($primary_dark, 0.1);
 	}
 }
 

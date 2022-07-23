@@ -1,0 +1,78 @@
+@use 'styles/variables' as *;
+
+.tableWrapper {
+	overflow-x: auto;
+}
+
+.studentsTable {
+	table-layout: fixed;
+	width: 100%;
+
+	background-color: white;
+	// border-collapse: collapse;
+	border-spacing: 0 0.25rem;
+
+	thead tr {
+		color: white;
+		background-color: rgba($primary_dark, 0.8);
+	}
+
+	// tr:nth-child(odd) td {
+	// 	background-color: rgba(black, 0.1);
+	// }
+
+	tr:nth-child(even) td {
+		background-color: rgba($primary_dark, 0.1);
+	}
+
+	th, td {
+		text-align: start;
+		min-width: 60px;
+		padding: 0.6rem;
+		height: 2.5rem;
+	}
+
+	th {
+		padding: 0.8rem 0.6rem;
+	}
+
+	a.editLink, a.deleteLink {
+		margin: 0 0.4rem;
+		color: #0000ee;
+		
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+.shimmer {
+	overflow: hidden;
+	position: relative;
+
+	@keyframes Shimmer {
+		0% {
+			background-position: -1024px 0;
+		}
+		100% {
+			background-position: +1024px 0;
+		}
+	}
+
+	&::after {
+		content: '';
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		width:  1024px;
+		height: 3rem;
+
+		background: linear-gradient(to right, #F0F0F0 15%, #fff 30%, #F0F0F0 40%);
+		background-size: 1024px 100%;
+		animation: Shimmer 3s linear infinite;
+	}
+}
+

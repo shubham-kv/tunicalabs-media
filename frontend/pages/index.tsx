@@ -2,7 +2,7 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
-import styles from '@styles/home.module.scss'
+import styles from 'styles/home.module.scss'
 
 const links = Object.freeze({
 	'Sign Up': '/sign-up',
@@ -15,10 +15,10 @@ const Home: NextPage = () => (
 	<Head>
 		<title>Tunicalabs Media</title>
 		<meta
-			name="description"
-			content="Tunicalabs media"
+			name='description'
+			content='Tunicalabs media'
 			/>
-		<link rel="icon" href="/favicon.ico" />
+		<link rel='icon' href='/favicon.ico' />
 	</Head>
 
 	<div className={styles.home}>

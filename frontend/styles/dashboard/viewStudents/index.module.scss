@@ -1,0 +1,11 @@
+@use 'styles/variables' as *;
+
+.viewStudents {
+	position: relative;
+	height: 100%;
+
+	h2 {
+		color: rgba($primary_dark, 0.6);
+		margin: 0;
+	}
+}
